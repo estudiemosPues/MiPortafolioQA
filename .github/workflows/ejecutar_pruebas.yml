@@ -36,6 +36,6 @@ jobs:
         run: robot robotframework/api/test_api.robot
       
       - name: Correr Test de UI
-        run: robot robotframework/web/test_ui.robot
+        run: robot robotframework/web/test_web.robot
 
        
