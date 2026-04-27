@@ -25,10 +25,17 @@ jobs:
           python-version: '3.10'
 
       # Tercero: Instala las herramientas de Robot Framework
-      - name: Instalar Librerías
+      - name: Instalar Librerías desde Requirements
         run: |
-          pip install robotframework robotframework-requests
+          python -m pip install --upgrade pip
+          # El robot ahora lee exactamente lo que tú tienes en tu PC
+          pip install -r requirements.txt
 
-      # Cuarto: ¡Ejecuta el test que acabamos de escribir!
+      # Cuarto: Ejecuta las pruebas de Robot Framework
       - name: Correr Test de API
         run: robot robotframework/api/test_api.robot
+      
+      - name: Correr Test de UI
+        run: robot robotframework/ui/test_ui.robot
+
+       

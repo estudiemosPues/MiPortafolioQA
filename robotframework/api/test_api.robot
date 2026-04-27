@@ -18,7 +18,7 @@ Validar Mi Primera API
     ${respuesta}=    GET On Session    mi_conexion    /users/1
     
     # Revisamos que la respuesta sea 200 (el código universal de 'Todo OK')
-    Status Should Be    404    ${respuesta}
+    Status Should Be    200    ${respuesta}
     
     # Extraemos el nombre del usuario para leerlo nosotros
     ${nombre}=    Set Variable    ${respuesta.json()['name']}

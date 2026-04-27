@@ -7,13 +7,23 @@
 ## 🎯 Mi Misión
 Mi objetivo es dominar las herramientas líderes del mercado para asegurar la calidad del software. Este proyecto nació de la curiosidad y las ganas de entender cómo "romper" y "validar" aplicaciones de forma eficiente.
 
+## 🛠️ Configuración del Entorno Local
+Para ejecutar estos tests en tu máquina, sigue estos pasos:
+
+1. **Clonar el repositorio.**
+2. **Crear el entorno virtual:** `python -m venv .venv`
+3. **Activar el entorno:** 
+   * En PowerShell: `.\.venv\Scripts\activate`
+4. **Instalar dependencias:** `pip install -r requirements.txt`
+
 ## 📂 Estructura del Proyecto
 He organizado este repositorio por tecnologías y especialidades para mantener un aprendizaje estructurado:
 
 ### 🤖 Robot Framework
-*   **[API](./robotframework/api):** Automatización de servicios REST usando `RequestsLibrary`.
-*   **[Web](./robotframework/web):** Pruebas de interfaz de usuario con `SeleniumLibrary`.
-*   **[Mobile](./robotframework/mobile):** (En construcción) Pruebas en dispositivos móviles con `Appium`.
+* `/robotframework/api`: Pruebas de API con RequestsLibrary.
+* `/robotframework/web`: Automatización Web (Selenium/Browser).
+* `requirements.txt`: Lista de dependencias del proyecto.
+* `.github/workflows`: Configuración de ejecución automática.
 
 ### 🎭 Próximamente (Roadmap)
 *   **Playwright:** Explorando el futuro de la automatización Web y API con TypeScript/Python.
