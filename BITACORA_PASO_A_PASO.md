@@ -97,3 +97,8 @@ Los reportes generados en GitHub Actions son volátiles (se borran al terminar l
 * **Keyword Encapsulation:** Se movieron las peticiones GET/POST a archivos `.resource`.
 * **Suite Setup:** Uso de `Suite Setup` para abrir la sesión de API una sola vez para todos los tests del archivo, optimizando el tiempo de ejecución.
 * **Separación de Lógica:** El test solo se encarga de la validación (Assert), mientras que el recurso se encarga de la comunicación (HTTP).
+
+## 🔄 Cambio de Proveedor de API (De ReqRes a JSONPlaceholder)
+* **Motivo:** ReqRes comenzó a solicitar `x-api-key` obligatoria para consultas básicas, requiriendo registro previo.
+* **Solución:** Migración a **JSONPlaceholder** para mantener el enfoque en la automatización pura sin gestión de credenciales externas.
+* **Lección:** En QA, la flexibilidad para cambiar de entorno o herramientas cuando el costo de mantenimiento (o acceso) sube es vital.
