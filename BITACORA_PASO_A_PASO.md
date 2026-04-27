@@ -52,3 +52,11 @@ Si un paso del asistente virtual tiene muchas tareas dentro de una carpeta espec
 - name: Ejecutar Suite de UI
   working-directory: robotframework/web
   run: python -m robot test_web.robot
+  ```
+
+## 📦 Artefactos (Evidencias del Pipeline)
+
+Los reportes generados en GitHub Actions son volátiles (se borran al terminar la sesión). Para conservarlos, usamos `actions/upload-artifact`.
+
+* **Concepto:** Un "Artifact" es cualquier archivo generado durante el workflow que queremos descargar después.
+* **Configuración Clave:** Usar `if: always()` para asegurar que, si la prueba falla, aún tengamos el `log.html` para analizar el error.

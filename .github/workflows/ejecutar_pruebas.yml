@@ -38,5 +38,15 @@ jobs:
       - name: Correr Test de UI
       # Agregamos la variable para cambiar 'chrome' por 'headlesschrome'
         run: robot --variable NAVEGADOR:headlesschrome robotframework/web/test_web.robot
-
-       
+      
+      # Quinto: Guardamos los informes de pruebas para que puedas verlos después
+      - name: Cargar Reportes de Robot Framework
+      # Este paso se ejecutará siempre, incluso si las pruebas fallan
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reportes-automatizacion
+          path: |
+            log.html
+            report.html
+            output.xml
