@@ -1,0 +1,30 @@
+# Este es el nombre que verás en la pestaña 'Actions' de GitHub
+name: Runner de Pruebas Automáticas
+
+# ¿Cuándo se despierta este asistente? Cuando subas cambios (push)
+on: [push]
+
+jobs:
+  trabajo-de-calidad:
+    # El asistente usará una computadora con Linux (Ubuntu)
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Primero: El asistente descarga tu código a su computadora virtual
+      - name: Clonar código
+        uses: actions/checkout@v4
+
+      # Segundo: Instala Python (el lenguaje que usa Robot)
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Tercero: Instala las herramientas de Robot Framework
+      - name: Instalar Librerías
+        run: |
+          pip install robotframework robotframework-requests
+
+      # Cuarto: ¡Ejecuta el test que acabamos de escribir!
+      - name: Correr Test de API
+        run: robot robotframework/api/test_api.robot
