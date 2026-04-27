@@ -60,3 +60,11 @@ Los reportes generados en GitHub Actions son volátiles (se borran al terminar l
 
 * **Concepto:** Un "Artifact" es cualquier archivo generado durante el workflow que queremos descargar después.
 * **Configuración Clave:** Usar `if: always()` para asegurar que, si la prueba falla, aún tengamos el `log.html` para analizar el error.
+
+
+## 🛠️ Mantenimiento y Logs del Sistema
+
+### ⚠️ Advertencia: Node.js Deprecation (Actions)
+* **Observación:** Aparece un warning indicando que `actions/setup-python@v5` y `actions/upload-artifact@v4` usan Node.js 20 (depreciado).
+* **Estado:** El pipeline se ejecuta con éxito (Success) porque GitHub fuerza la ejecución en Node.js 24.
+* **Acción:** No requiere cambio inmediato por parte del usuario, ya que se están usando las versiones mayores más recientes. Se debe monitorear futuras versiones (@v6 o @v5 respectivamente) para limpiar el log.
