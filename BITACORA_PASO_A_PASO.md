@@ -68,3 +68,32 @@ Los reportes generados en GitHub Actions son volátiles (se borran al terminar l
 * **Observación:** Aparece un warning indicando que `actions/setup-python@v5` y `actions/upload-artifact@v4` usan Node.js 20 (depreciado).
 * **Estado:** El pipeline se ejecuta con éxito (Success) porque GitHub fuerza la ejecución en Node.js 24.
 * **Acción:** No requiere cambio inmediato por parte del usuario, ya que se están usando las versiones mayores más recientes. Se debe monitorear futuras versiones (@v6 o @v5 respectivamente) para limpiar el log.
+
+
+## 🏗️ Reestructuración de Resources (Modularidad)
+* **Objetivo:** Implementar una arquitectura desacoplada donde la lógica de negocio esté separada de la ejecución.
+* **Carpetas creadas:** `api/`, `pages/`, `common/`, `data/`.
+* **Beneficio:** Reutilización de código entre pruebas unitarias de UI/API y flujos complejos E2E.
+
+## 🔧 Configuración de Variables Globales y Locales
+* **Concepto:** Sobrescritura de variables (Overriding).
+* **Uso:** Definimos `${NAVEGADOR} chrome` en el código como respaldo (fallback). 
+* **CI/CD:** En el pipeline (YAML), pasamos `--variable NAVEGADOR:headlesschrome` para forzar el modo sin interfaz.
+* **Lección:** Las variables pasadas por línea de comandos siempre tienen prioridad sobre las del código.
+
+## 🔄 Ciclo de Vida: Setup y Teardown
+* **Test Setup:** Configuración previa necesaria para que el test pueda existir (pre-condición).
+* **Test Teardown:** Limpieza obligatoria después del test (post-condición). 
+* **Regla de Oro:** El Teardown corre siempre, incluso si el test falla. Esto garantiza que el ambiente de pruebas quede limpio para el siguiente test.
+* **Ubicación en Settings:** Permite que todos los tests del archivo compartan la misma rutina de inicio y fin, evitando repetir código (Principio DRY: Don't Repeat Yourself).
+
+## 🧩 Independencia de Recursos (Scope)
+* **Regla:** Cada archivo `.resource` debe declarar las librerías que utiliza internamente.
+* **Razón:** Los recursos no "heredan" librerías de otros recursos ni del archivo `.robot` que los llama.
+* **Beneficio:** Permite que los archivos sean reutilizables y que las herramientas de desarrollo (IntelliSense/Autocompletado) funcionen correctamente.
+* **Mito:** Importar la misma librería en varios archivos NO afecta el rendimiento; Robot Framework gestiona la carga de forma eficiente.
+
+## 🌐 Modularización de API (Backend)
+* **Keyword Encapsulation:** Se movieron las peticiones GET/POST a archivos `.resource`.
+* **Suite Setup:** Uso de `Suite Setup` para abrir la sesión de API una sola vez para todos los tests del archivo, optimizando el tiempo de ejecución.
+* **Separación de Lógica:** El test solo se encarga de la validación (Assert), mientras que el recurso se encarga de la comunicación (HTTP).
