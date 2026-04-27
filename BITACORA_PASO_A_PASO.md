@@ -102,3 +102,8 @@ Los reportes generados en GitHub Actions son volátiles (se borran al terminar l
 * **Motivo:** ReqRes comenzó a solicitar `x-api-key` obligatoria para consultas básicas, requiriendo registro previo.
 * **Solución:** Migración a **JSONPlaceholder** para mantener el enfoque en la automatización pura sin gestión de credenciales externas.
 * **Lección:** En QA, la flexibilidad para cambiar de entorno o herramientas cuando el costo de mantenimiento (o acceso) sube es vital.
+
+## 🏆 Flujos E2E Híbridos (API + UI)
+* **Definición:** Pruebas que integran la validación de servicios (API) con la experiencia de usuario (UI) en un solo caso de prueba.
+* **Técnica de Inyección:** Los datos obtenidos de una respuesta JSON (Backend) se utilizan como variables de entrada para los Page Objects (Frontend).
+* **Valor Senior:** Reducción de datos "hardcoded" (fijos) y validación de la integridad del flujo de información de extremo a extremo.
