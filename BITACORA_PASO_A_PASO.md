@@ -22,6 +22,10 @@ Ocurre si no has activado el ambiente virtual.
 Si Windows bloquea la activación del entorno.
 * **Solución (Admin):** `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
+### 3. Error: SessionNotCreatedException (Chrome instance exited)
+* **Causa:** Intentar ejecutar pruebas web con interfaz gráfica en un entorno de CI (GitHub Actions) que no tiene monitor.
+* **Solución:** Pasar el parámetro `--variable NAVEGADOR:headlesschrome` en el comando de ejecución del Workflow para que el navegador corra en segundo plano.
+
 ## 🚀 Comandos Rápidos
 * **Activar entorno:** `.\.venv\Scripts\activate`
 * **Correr tests API:** `python -m robot robotframework/api/`

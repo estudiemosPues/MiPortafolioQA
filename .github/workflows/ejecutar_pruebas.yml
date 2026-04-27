@@ -36,6 +36,7 @@ jobs:
         run: robot robotframework/api/test_api.robot
       
       - name: Correr Test de UI
-        run: robot robotframework/web/test_web.robot
+      # Agregamos la variable para cambiar 'chrome' por 'headlesschrome'
+        run: robot --variable NAVEGADOR:headlesschrome robotframework/web/test_web.robot
 
        
