@@ -4,6 +4,10 @@ name: Runner de Pruebas Automáticas
 # ¿Cuándo se despierta este asistente? Cuando subas cambios (push)
 on: [push]
 
+# 🚀 ESTA ES LA SOLUCIÓN: Forzamos a GitHub a usar Node 24 para todas las acciones
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   trabajo-de-calidad:
     # El asistente usará una computadora con Linux (Ubuntu)
