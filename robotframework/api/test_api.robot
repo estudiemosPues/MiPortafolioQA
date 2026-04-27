@@ -9,9 +9,10 @@ ${URL_BASE}    https://jsonplaceholder.typicode.com
 *** Test Cases ***
 Validar Mi Primera API
     [Documentation]    Prueba simple para confirmar que la API responde.
-    
+   
+    # Agregamos 'verify=${True}' para confirmar que queremos una conexión segura y validada
     # Creamos la conexión con el servidor (como abrir el teléfono para llamar)
-    Create Session    mi_conexion    ${URL_BASE}
+    Create Session    mi_conexion    ${URL_BASE}    verify=${True}
     
     # Hacemos la llamada (GET) para pedir los datos del usuario 1
     ${respuesta}=    GET On Session    mi_conexion    /users/1
