@@ -12,11 +12,11 @@ jobs:
     steps:
       # Primero: El asistente descarga tu código a su computadora virtual
       - name: Clonar código
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # Segundo: Instala Python (el lenguaje que usa Robot)
       - name: Instalar Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
