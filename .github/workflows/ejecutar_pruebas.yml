@@ -32,13 +32,18 @@ jobs:
           pip install -r requirements.txt
 
       # Cuarto: Ejecuta las pruebas de Robot Framework
-      - name: Correr Test de API
-        run: robot robotframework/api/test_api.robot
+      #- name: Correr Test de API
+      #  run: robot robotframework/api/test_api.robot
       
-      - name: Correr Test de UI
+      #- name: Correr Test de UI
       # Agregamos la variable para cambiar 'chrome' por 'headlesschrome'
-        run: robot --variable NAVEGADOR:headlesschrome robotframework/web/test_web.robot
+      #  run: robot --variable NAVEGADOR:headlesschrome robotframework/web/test_web.robot
       
+      - name: Ejecutar Suite Completa (API y UI)
+        # Ejecutamos toda la carpeta 'robotframework' de un solo golpe
+        # Pasamos la variable headlesschrome para que la parte Web no falle
+        run: python -m robot --variable NAVEGADOR:headlesschrome robotframework/
+
       # Quinto: Guardamos los informes de pruebas para que puedas verlos después
       - name: Cargar Reportes de Robot Framework
       # Este paso se ejecutará siempre, incluso si las pruebas fallan
