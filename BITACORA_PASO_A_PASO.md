@@ -107,3 +107,14 @@ Los reportes generados en GitHub Actions son volátiles (se borran al terminar l
 * **Definición:** Pruebas que integran la validación de servicios (API) con la experiencia de usuario (UI) en un solo caso de prueba.
 * **Técnica de Inyección:** Los datos obtenidos de una respuesta JSON (Backend) se utilizan como variables de entrada para los Page Objects (Frontend).
 * **Valor Senior:** Reducción de datos "hardcoded" (fijos) y validación de la integridad del flujo de información de extremo a extremo.
+
+## ⚡ Evolución a Browser Library (Playwright)
+* **Diferencia clave:** Eliminación de esperas manuales (Auto-wait) y mayor velocidad de ejecución en comparación con Selenium.
+* **Seguridad:** Implementación de `Fill Secret` para manejo de datos sensibles en reportes.
+* **Configuración:** Requiere el comando `rfbrowser init` para preparar los binarios de los navegadores en el entorno local y de CI.
+
+## 🔐 Manejo de Secretos en Browser Library
+* **Error:** `Direct assignment of values... is not allowed`.
+* **Causa:** Uso de `${variable}` en keywords de tipo "Secret", lo que expone el dato en los logs (Variable Spoiling).
+* **Solución:** Usar la sintaxis de referencia `$nombre_variable` (sin llaves).
+* **Valor Senior:** Garantizar que credenciales y tokens nunca sean legibles en los reportes de ejecución, cumpliendo con estándares de seguridad de datos.

@@ -31,6 +31,9 @@ jobs:
           # El robot ahora lee exactamente lo que tú tienes en tu PC
           pip install -r requirements.txt
 
+      - name: Inicializar Browser Library (Playwright)
+        run: rfbrowser init
+
       # Cuarto: Ejecuta las pruebas de Robot Framework
       #- name: Correr Test de API
       #  run: robot robotframework/api/test_api.robot
