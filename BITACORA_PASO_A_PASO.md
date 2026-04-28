@@ -118,3 +118,19 @@ Los reportes generados en GitHub Actions son volátiles (se borran al terminar l
 * **Causa:** Uso de `${variable}` en keywords de tipo "Secret", lo que expone el dato en los logs (Variable Spoiling).
 * **Solución:** Usar la sintaxis de referencia `$nombre_variable` (sin llaves).
 * **Valor Senior:** Garantizar que credenciales y tokens nunca sean legibles en los reportes de ejecución, cumpliendo con estándares de seguridad de datos.
+
+## ⚖️ Estrategia de Selección de Herramientas (Selenium vs Browser)
+* **SeleniumLibrary:** Ideal para estabilidad en infraestructura clásica y compatibilidad total con drivers legacy.
+* **Browser Library:** Preferida para desarrollo ágil, aplicaciones de una sola página (SPA) y ejecución de alta velocidad en CI/CD.
+* **Decisión Técnica:** La elección depende del "Tech Stack" de la aplicación y la necesidad de herramientas avanzadas de depuración (Network tracking, Video, Tracing).
+
+## ☁️ Testing en la Nube (Cloud Grids)
+* **BrowserStack/SauceLabs:** Plataformas que eliminan la necesidad de un laboratorio físico de dispositivos.
+* **Relación con Selenium:** Es el estándar nativo de la industria para grids. Utiliza el protocolo W3C para enviar comandos a dispositivos remotos.
+* **Relación con Browser Library:** Requiere una conexión de tipo WebSocket (Playwright Connect). Es más rápido pero requiere una configuración de red más moderna.
+* **Decisión Senior:** Usar Cloud Grids cuando el requerimiento de negocio exige certificar la aplicación en múltiples combinaciones de SO/Browser/Dispositivo real que no se pueden emular localmente.
+
+## ❌ Error: Missing X server (Browser Library)
+* **Causa:** Intento de ejecutar Browser Library con `headless=False` en un entorno de servidor (GitHub Actions) sin interfaz gráfica.
+* **Solución:** Configurar `headless=True` en la keyword `New Browser`.
+* **Lección:** Playwright es más estricto que Selenium con los logs de error y proporciona un "Call log" detallado que facilita el diagnóstico del fallo del sistema.

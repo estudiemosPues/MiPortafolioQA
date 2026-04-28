@@ -6,10 +6,11 @@ Library    Browser
 ${TXT_USUARIO}      id=user-name
 ${TXT_PASSWORD}     id=password
 ${BTN_LOGIN}        id=login-button
+${HEADLESS_MODE}    True
 
 *** Keywords ***
 Iniciar Navegador Y SauceDemo
-    New Browser    browser=chromium    headless=False
+    New Browser    browser=chromium    headless=${HEADLESS_MODE}
     New Context    viewport={'width': 1920, 'height': 1080}
     New Page       https://www.saucedemo.com/
 

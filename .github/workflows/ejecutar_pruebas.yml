@@ -42,10 +42,17 @@ jobs:
       # Agregamos la variable para cambiar 'chrome' por 'headlesschrome'
       #  run: robot --variable NAVEGADOR:headlesschrome robotframework/web/test_web.robot
       
-      - name: Ejecutar Suite Completa (API y UI)
+      #- name: Ejecutar Suite Completa (API y UI)
         # Ejecutamos toda la carpeta 'robotframework' de un solo golpe
         # Pasamos la variable headlesschrome para que la parte Web no falle
-        run: python -m robot --variable NAVEGADOR:headlesschrome robotframework/
+       # run: python -m robot --variable NAVEGADOR:headlesschrome robotframework/
+
+      - name: Ejecutar Toda la Suite de Calidad
+        run: |
+          python -m robot -d resultados \
+          --variable NAVEGADOR:headlesschrome \
+          --variable HEADLESS_MODE:True \
+          robotframework/
 
       # Quinto: Guardamos los informes de pruebas para que puedas verlos después
       - name: Cargar Reportes de Robot Framework
